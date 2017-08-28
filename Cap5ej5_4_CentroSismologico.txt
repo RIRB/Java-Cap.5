@@ -1,0 +1,55 @@
+package javafunda2dosemestre; 
+import java.util.Scanner;
+public class Cap5ej5_4_CentroSismologico {
+    
+    public static void main(String[]args){
+        
+        Scanner lectura = new Scanner(System.in); 
+        System.out.println("Magnitud Totales Registrada:"); 
+        
+        int SismoMax = 0, SismoMin;
+        int suma=0;
+        double PromedioSismos= 0;
+        int GradoSismo;
+        
+        //Magnitudes a ingresar
+        int [] MagnitudSismo = new int[10];
+        for (int i=0; i<MagnitudSismo.length; i++){
+            System.out.println("Magnitud Registrada:");
+            GradoSismo = lectura.nextInt();
+            MagnitudSismo[i] = GradoSismo;
+            
+            if(GradoSismo < 4){
+                System.out.println("Registro como: ->Sismo Leve");
+            }else{
+                if(4<=GradoSismo && GradoSismo <7){
+                    System.out.println("Registro como: ->Sismo Medio");
+                }else{
+                    System.out.println("Registrado como: ->Terremoto");
+                }
+            }       
+        }
+        //Calculo de las Magnitudes
+        SismoMin= MagnitudSismo[0];
+        for(int j=1; j<MagnitudSismo.length; j++){
+            if (MagnitudSismo[j] < SismoMin){
+                SismoMin = MagnitudSismo[j];
+        }
+        SismoMax= MagnitudSismo[0];
+        for(int h=1; h<MagnitudSismo.length; h++){
+                        if (MagnitudSismo[j] > SismoMax){
+                SismoMax = MagnitudSismo[j];
+                }
+            }
+        }
+        //Orden de las Magnitudes (modo:-> oculto)
+        for (int g:MagnitudSismo){            
+            suma = (suma + (g));
+            PromedioSismos = (double)(suma) / 10;
+        } 
+        //Impresion de los Calculos
+        System.out.println("El Sismo de Magnitud Maxima calculado fue de: "+SismoMax);
+        System.out.println("El Sismo de Magnitud Minima calculada fue de: "+SismoMin);
+        System.out.println("El Promedio de todos los Sismos fue de: "+PromedioSismos);  
+    }
+}
